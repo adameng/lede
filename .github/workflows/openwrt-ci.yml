@@ -12,9 +12,9 @@ name: OpenWrt-CI
 on:
 #  release:
 #    types: [published]
-  push:
-    branches:
-      - master
+#  push:
+#    branches:
+#      - master
 #    paths:
 #      - '.config'
 #  schedule:
@@ -128,11 +128,6 @@ jobs:
           # CONFIG_TARGET_EXT4_BLOCKSIZE_2K is not set
           # CONFIG_TARGET_EXT4_BLOCKSIZE_1K is not set
           CONFIG_TARGET_EXT4_BLOCKSIZE=4096
-          CONFIG_TARGET_EXT4_JOURNAL=y
-          CONFIG_TARGET_ROOTFS_SQUASHFS=y
-          CONFIG_TARGET_SQUASHFS_BLOCK_SIZE=256
-          CONFIG_TARGET_UBIFS_FREE_SPACE_FIXUP=y
-          CONFIG_TARGET_UBIFS_JOURNAL_SIZE=""
           EOF
           # 编译UEFI固件:
           # cat >> .config <<EOF
