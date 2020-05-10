@@ -19,8 +19,8 @@ on:
 #      - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
-  watch:
-    types: [started]
+#  watch:
+#    types: [started]
     
 jobs:
 
@@ -107,17 +107,17 @@ jobs:
           # 无论你想要对固件进行怎样的定制, 都需要且只需要修改 EOF 回环内的内容.
           # 
           # 编译x64固件:
-          cat >> .config <<EOF
-          CONFIG_TARGET_armvirt=y
-          CONFIG_TARGET_armvirt_64=y
-          CONFIG_TARGET_armvirt_64_Default=y
+          CONFIG_TARGET_bcm27xx=y
+          CONFIG_TARGET_bcm27xx_bcm2710=y
+          CONFIG_TARGET_bcm27xx_bcm2710_DEVICE_rpi-3=y
           CONFIG_HAS_SUBTARGETS=y
-          CONFIG_TARGET_BOARD="armvirt"
-          CONFIG_TARGET_SUBTARGET="64"
-          CONFIG_TARGET_PROFILE="Default"
-          CONFIG_TARGET_ARCH_PACKAGES="aarch64_generic"
-          CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe -mcpu=generic"
-          CONFIG_CPU_TYPE="generic"
+          CONFIG_HAS_DEVICES=y
+          CONFIG_TARGET_BOARD="bcm27xx"
+          CONFIG_TARGET_SUBTARGET="bcm2710"
+          CONFIG_TARGET_PROFILE="DEVICE_rpi-3"
+          CONFIG_TARGET_ARCH_PACKAGES="aarch64_cortex-a53"
+          CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe -mcpu=cortex-a53"
+          CONFIG_CPU_TYPE="cortex-a53"
           EOF
           # 固件压缩:
           cat >> .config <<EOF
