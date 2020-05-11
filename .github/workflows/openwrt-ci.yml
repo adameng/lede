@@ -19,8 +19,8 @@ on:
 #      - '.config'
 #  schedule:
 #    - cron: 0 8 * * 5
-  watch:
-    types: [started]
+#  watch:
+#    types: [started]
     
 jobs:
 
@@ -46,26 +46,7 @@ jobs:
           sudo -E apt-get -y install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch python3 unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs gcc-multilib g++-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler antlr3 gperf
           sudo -E apt-get -y autoremove --purge
           sudo -E apt-get clean
-          
-          # Add luci-app-vssr Hellw world
-          git clone https://github.com/jerrykuku/lua-maxminddb.git package-temp/lua-maxminddb
-          git clone https://github.com/jerrykuku/luci-app-vssr.git package-temp/luci-app-vssr
-          mv -f package-temp/lua-maxminddb package/lean/
-          mv -f package-temp/luci-app-vssr package/lean/
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_lua-maxminddb=y
-          CONFIG_PACKAGE_luci-app-vssr=y
-          EOF
-
-          # Add luci-theme-opentomcat
-          git clone https://github.com/Leo-Jo-My/luci-theme-opentomcat.git theme-temp/luci-theme-opentomcat
-          rm -rf theme-temp/luci-theme-opentomcat/LICENSE
-          rm -rf theme-temp/luci-theme-opentomcat/README.md
-          mv -f theme-temp/luci-theme-opentomcat package/lean/
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-theme-opentomcat=y
-          EOF
-                    
+                             
           df -h
 
       - name: Update feeds
