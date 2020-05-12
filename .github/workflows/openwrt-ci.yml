@@ -87,130 +87,277 @@ jobs:
           # 
           # 无论你想要对固件进行怎样的定制, 都需要且只需要修改 EOF 回环内的内容.
           # 
-          # 编译x64固件:
+          cat >> .config <<EOF
           CONFIG_TARGET_bcm27xx=y
           CONFIG_TARGET_bcm27xx_bcm2710=y
           CONFIG_TARGET_bcm27xx_bcm2710_DEVICE_rpi-3=y
-          CONFIG_HAS_SUBTARGETS=y
-          CONFIG_HAS_DEVICES=y
-          CONFIG_TARGET_BOARD="bcm27xx"
-          CONFIG_TARGET_SUBTARGET="bcm2710"
-          CONFIG_TARGET_PROFILE="DEVICE_rpi-3"
-          CONFIG_TARGET_ARCH_PACKAGES="aarch64_cortex-a53"
-          CONFIG_DEFAULT_TARGET_OPTIMIZATION="-Os -pipe -mcpu=cortex-a53"
-          CONFIG_CPU_TYPE="cortex-a53"
-          EOF
-          # 固件压缩:
-          cat >> .config <<EOF
+          CONFIG_GNUTLS_ALPN=y
+          CONFIG_GNUTLS_ANON=y
+          CONFIG_GNUTLS_DTLS_SRTP=y
+          CONFIG_GNUTLS_HEARTBEAT=y
+          CONFIG_GNUTLS_OCSP=y
+          CONFIG_GNUTLS_PSK=y
+          CONFIG_LIBCURL_COOKIES=y
+          CONFIG_LIBCURL_FILE=y
+          CONFIG_LIBCURL_FTP=y
+          CONFIG_LIBCURL_HTTP=y
+          CONFIG_LIBCURL_NO_SMB="!"
+          CONFIG_LIBCURL_OPENSSL=y
+          CONFIG_LIBCURL_PROXY=y
+          CONFIG_OPENSSL_WITH_COMPRESSION=y
+          CONFIG_OPENSSL_WITH_DTLS=y
+          CONFIG_OPENSSL_WITH_EC2M=y
+          CONFIG_OPENSSL_WITH_NPN=y
+          CONFIG_PACKAGE_attr=y
+          CONFIG_PACKAGE_avahi-dbus-daemon=y
+          CONFIG_PACKAGE_bash=y
+          CONFIG_PACKAGE_btrfs-progs=y
+          CONFIG_PACKAGE_ca-bundle=y
+          CONFIG_PACKAGE_cgroupfs-mount=y
+          CONFIG_PACKAGE_chinadns-ng=y
+          CONFIG_PACKAGE_containerd=y
+          CONFIG_PACKAGE_coreutils-nohup=y
+          CONFIG_PACKAGE_curl=y
+          CONFIG_PACKAGE_dbus=y
+          CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
+          CONFIG_PACKAGE_docker-ce=y
+          CONFIG_PACKAGE_fdisk=y
+          CONFIG_PACKAGE_haproxy=y
+          CONFIG_PACKAGE_iptables-mod-extra=y
+          CONFIG_PACKAGE_kmod-br-netfilter=y
+          CONFIG_PACKAGE_kmod-crypto-crc32c=y
+          CONFIG_PACKAGE_kmod-dax=y
+          CONFIG_PACKAGE_kmod-dm=y
+          CONFIG_PACKAGE_kmod-ikconfig=y
+          CONFIG_PACKAGE_kmod-ipt-extra=y
+          CONFIG_PACKAGE_kmod-lib-crc32c=y
+          CONFIG_PACKAGE_kmod-nf-ipvs=y
+          CONFIG_PACKAGE_kmod-veth=y
+          CONFIG_PACKAGE_libattr=y
+          CONFIG_PACKAGE_libavahi-client=y
+          CONFIG_PACKAGE_libavahi-dbus-support=y
+          CONFIG_PACKAGE_libcap=y
+          CONFIG_PACKAGE_libcurl=y
+          CONFIG_PACKAGE_libdaemon=y
+          CONFIG_PACKAGE_libdbus=y
+          CONFIG_PACKAGE_libdevmapper=y
+          CONFIG_PACKAGE_libexpat=y
+          CONFIG_PACKAGE_libfdisk=y
+          CONFIG_PACKAGE_libgmp=y
+          CONFIG_PACKAGE_libgnutls=y
+          CONFIG_PACKAGE_libltdl=y
+          CONFIG_PACKAGE_liblzo=y
+          CONFIG_PACKAGE_libmaxminddb=y
+          CONFIG_PACKAGE_libmount=y
+          CONFIG_PACKAGE_libncurses=y
+          CONFIG_PACKAGE_libnettle=y
+          CONFIG_PACKAGE_libnetwork=y
+          CONFIG_PACKAGE_libpam=y
+          CONFIG_PACKAGE_libpopt=y
+          CONFIG_PACKAGE_libreadline=y
+          CONFIG_PACKAGE_libtasn1=y
+          CONFIG_PACKAGE_libtirpc=y
+          CONFIG_PACKAGE_libwebsockets-full=y
+          CONFIG_PACKAGE_lua-cjson=y
+          CONFIG_PACKAGE_lua-maxminddb=y
+          CONFIG_PACKAGE_luasocket=y
+          CONFIG_PACKAGE_luci-app-dockerman=y
+          CONFIG_PACKAGE_luci-app-openclash=y
+          CONFIG_PACKAGE_luci-app-passwall=y
+          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=y
+          CONFIG_PACKAGE_luci-app-samba4=y
+          # CONFIG_PACKAGE_luci-app-ssr-plus is not set
+          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Redsocks2 is not set
+          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server is not set
+          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan is not set
+          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray is not set
+          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray_plugin is not set
+          CONFIG_PACKAGE_luci-app-ttyd=y
+          CONFIG_PACKAGE_luci-app-vssr=y
+          CONFIG_PACKAGE_luci-app-vssr_INCLUDE_ShadowsocksR_Server=y
+          CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
+          CONFIG_PACKAGE_luci-theme-argon=y
+          CONFIG_PACKAGE_luci-theme-atmaterial=y
+          CONFIG_PACKAGE_luci-theme-opentomato=y
+          CONFIG_PACKAGE_luci-theme-opentomcat=y
+          CONFIG_PACKAGE_mount-utils=y
+          CONFIG_PACKAGE_resolveip=y
+          CONFIG_PACKAGE_runc=y
+          CONFIG_PACKAGE_samba4-libs=y
+          CONFIG_PACKAGE_samba4-server=y
+          CONFIG_PACKAGE_tcping=y
+          CONFIG_PACKAGE_terminfo=y
+          CONFIG_PACKAGE_tini=y
+          CONFIG_PACKAGE_ttyd=y
+          CONFIG_PACKAGE_unzip=y
+          CONFIG_PACKAGE_wsdd2=y
+          CONFIG_SAMBA4_SERVER_AVAHI=y
+          CONFIG_SAMBA4_SERVER_NETBIOS=y
+          CONFIG_SAMBA4_SERVER_VFS=y
+          CONFIG_TARGET_EXT4_BLOCKSIZE=4096
+          CONFIG_TARGET_EXT4_BLOCKSIZE_4K=y
+          CONFIG_TARGET_EXT4_JOURNAL=y
+          CONFIG_TARGET_EXT4_RESERVED_PCT=0
           CONFIG_TARGET_IMAGES_GZIP=y
           CONFIG_TARGET_ROOTFS_EXT4FS=y
-          CONFIG_TARGET_EXT4_RESERVED_PCT=0
-          CONFIG_TARGET_EXT4_BLOCKSIZE_4K=y
-          # CONFIG_TARGET_EXT4_BLOCKSIZE_2K is not set
-          # CONFIG_TARGET_EXT4_BLOCKSIZE_1K is not set
-          CONFIG_TARGET_EXT4_BLOCKSIZE=4096
-          EOF
-          # 编译UEFI固件:
-          # cat >> .config <<EOF
-          # CONFIG_EFI_IMAGES=y
-          # EOF
-          # IPv6支持:
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
-          CONFIG_PACKAGE_ipv6helper=y
-          EOF
-          # 多文件系统支持:
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_kmod-fs-nfs=y
-          CONFIG_PACKAGE_kmod-fs-nfs-common=y
-          CONFIG_PACKAGE_kmod-fs-nfs-v3=y
-          CONFIG_PACKAGE_kmod-fs-nfs-v4=y
-          CONFIG_PACKAGE_kmod-fs-ntfs=y
-          CONFIG_PACKAGE_kmod-fs-squashfs=y
-          EOF
-          # USB3.0支持:
-          # cat >> .config <<EOF
-          # CONFIG_PACKAGE_kmod-usb-ohci=y
-          # CONFIG_PACKAGE_kmod-usb-ohci-pci=y
-          # CONFIG_PACKAGE_kmod-usb2=y
-          # CONFIG_PACKAGE_kmod-usb2-pci=y
-          # CONFIG_PACKAGE_kmod-usb3=y
-          # EOF
-          # 常用LuCI插件选择:
-          cat >> .config <<EOF
-          CONFIG_PACKAGE_luci-app-aria2=y
-          # CONFIG_PACKAGE_luci-app-baidupcs-web=y
-          CONFIG_PACKAGE_luci-app-docker=y  #Docker容器
-          CONFIG_PACKAGE_luci-app-kodexplorer=y
-          # CONFIG_PACKAGE_luci-app-openvpn=y
-          # CONFIG_PACKAGE_luci-app-openvpn-server=y
-          # CONFIG_PACKAGE_luci-app-qbittorrent=y
-          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Kcptun=y
-          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Shadowsocks=y
-          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server=y
-          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Socks=y
-          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray=y
-          CONFIG_PACKAGE_luci-app-ttyd=y
-          # CONFIG_PACKAGE_luci-app-verysync=y
-          # CONFIG_PACKAGE_luci-app-webadmin=y
-          CONFIG_PACKAGE_luci-app-wireguard=y  #WiFi违禁软件无线
-          # CONFIG_PACKAGE_luci-app-wrtbwmon=y
-          CONFIG_PACKAGE_luci-app-v2ray-server=y  #v2ray 服务器
-          CONFIG_PACKAGE_luci-app-cifs-mount=y #挂载 SMB/CIFS 网络共享文件夹
-          # CONFIG_PACKAGE_luci-app-diskman=y #DiskMan 磁盘管理
-          CONFIG_PACKAGE_luci-app-netdata=y  #Netdata实时监控（图表）
-          CONFIG_PACKAGE_luci-app-ipsec-vpnd=y
-          CONFIG_PACKAGE_luci-app-transmission=y
-          CONFIG_PACKAGE_luci-app-hd-idle=y  #硬盘休眠
-          CONFIG_PACKAGE_luci-app-mjpg-streamer=y #MJPG-streamer
-          # CONFIG_PACKAGE_luci-app-qos is not set  #流量服务质量(QoS)流控
-          CONFIG_DEFAULT_luci-app-cpufreq=y
-          # CONFIG_PACKAGE_luci-app-zerotier is not set
-          CONFIG_PACKAGE_luci-app-minidlna=y  #完全兼容DLNA / UPnP-AV客户端的服务器软件
-          CONFIG_PACKAGE_luci-app-frpc=y #内网穿透 Frp
-          CONFIG_PACKAGE_luci-app-nlbwmon=y   #网络带宽监视器
-          CONFIG_PACKAGE_luci-app-usb-printer=y #USB 打印服务器
-          CONFIG_PACKAGE_luci-app-wrtbwmon=y  #实时流量监测
-          CONFIG_PACKAGE_luci-app-arpbind=y #IP/MAC绑定
-          CONFIG_PACKAGE_luci-app-accesscontrol=y #访问时间控制
-          CONFIG_PACKAGE_luci-app-ramfree=y  #释放内存
-          CONFIG_PACKAGE_luci-app-samba4=y
-          CONFIG_PACKAGE_luci-app-upnp=y   #通用即插即用UPnP（端口自动转发）
-          CONFIG_PACKAGE_luci-app-ddns=y #动态域名 DNS
-          CONFIG_PACKAGE_luci-app-firewall=y #添加防火墙
-          # CONFIG_PACKAGE_luci-app-guest-wifi=y   #WiFi访客网络
-          CONFIG_PACKAGE_luci-app-adbyby-plus=y  #广告屏蔽大师Plus +
-          CONFIG_PACKAGE_luci-app-aria2=y  # Aria2下载工具
-          CONFIG_PACKAGE_luci-app-autoreboot=y #支持计划重启
-          CONFIG_PACKAGE_luci-app-vsftpd=y #FTP服务器
-          CONFIG_PACKAGE_luci-app-flowoffload=y #Turbo ACC网络加速
-          CONFIG_PACKAGE_luci-app-vlmcsd=y  #KMS服务器设置
-          CONFIG_PACKAGE_luci-app-wol=y #WOL网络唤醒
-          CONFIG_PACKAGE_luci-app-unblockmusic=y
-          CONFIG_UnblockNeteaseMusic_Go=y
-          CONFIG_UnblockNeteaseMusic_NodeJS=y
-          # EOF
-          # LuCI主题:
-          # cat >> .config <<EOF
-          # CONFIG_PACKAGE_luci-theme-argon=y
-          # CONFIG_PACKAGE_luci-theme-netgear=y
-          # EOF
-          # 常用软件包:
-          cat >> .config <<EOF
+          CONFIG_TARGET_ROOTFS_PARTSIZE=512
+          # CONFIG_TARGET_ROOTFS_SQUASHFS is not set
+          CONFIG_TARGET_ROOTFS_TARGZ=y
+          CONFIG_LIBSODIUM_MINIMAL=y
+          CONFIG_PACKAGE_libev=y
+          CONFIG_PACKAGE_libevent2=y
+          CONFIG_PACKAGE_libnet-1.2.x=y
+          CONFIG_PACKAGE_libpcap=y
+          CONFIG_PACKAGE_libsodium=y
+          CONFIG_PACKAGE_microsocks=y
+          CONFIG_PACKAGE_redsocks2=y
+          CONFIG_PACKAGE_shadowsocks-libev-ss-local=y
+          CONFIG_PACKAGE_shadowsocks-libev-ss-redir=y
+          CONFIG_PACKAGE_simple-obfs=y
+          CONFIG_PACKAGE_tcpping=y
+          CONFIG_PACKAGE_v2ray-plugin=y
+          # CONFIG_PCAP_HAS_NETFILTER is not set
+          # CONFIG_PCAP_HAS_USB is not set
+          # CONFIG_SIMPLE_OBFS_STATIC_LINK is not set
+          CONFIG_TARGET_bcm27xx=y
+          CONFIG_TARGET_bcm27xx_bcm2710=y
+          CONFIG_TARGET_bcm27xx_bcm2710_DEVICE_rpi-3=y
+          CONFIG_GNUTLS_ALPN=y
+          CONFIG_GNUTLS_ANON=y
+          CONFIG_GNUTLS_DTLS_SRTP=y
+          CONFIG_GNUTLS_HEARTBEAT=y
+          CONFIG_GNUTLS_OCSP=y
+          CONFIG_GNUTLS_PSK=y
+          CONFIG_LIBCURL_COOKIES=y
+          CONFIG_LIBCURL_FILE=y
+          CONFIG_LIBCURL_FTP=y
+          CONFIG_LIBCURL_HTTP=y
+          CONFIG_LIBCURL_NO_SMB="!"
+          CONFIG_LIBCURL_OPENSSL=y
+          CONFIG_LIBCURL_PROXY=y
+          CONFIG_OPENSSL_WITH_COMPRESSION=y
+          CONFIG_OPENSSL_WITH_DTLS=y
+          CONFIG_OPENSSL_WITH_EC2M=y
+          CONFIG_OPENSSL_WITH_NPN=y
+          CONFIG_PACKAGE_attr=y
+          CONFIG_PACKAGE_avahi-dbus-daemon=y
+          CONFIG_PACKAGE_bash=y
+          CONFIG_PACKAGE_btrfs-progs=y
+          CONFIG_PACKAGE_ca-bundle=y
+          CONFIG_PACKAGE_cgroupfs-mount=y
+          CONFIG_PACKAGE_chinadns-ng=y
+          CONFIG_PACKAGE_containerd=y
+          CONFIG_PACKAGE_coreutils-nohup=y
           CONFIG_PACKAGE_curl=y
-          CONFIG_PACKAGE_htop=y
-          CONFIG_PACKAGE_nano=y
-          CONFIG_PACKAGE_screen=y
-          CONFIG_PACKAGE_tree=y
-          CONFIG_PACKAGE_vim-fuller=y
-          CONFIG_PACKAGE_wget=y
-          CONFIG_PACKAGE_htop=y
-          CONFIG_PACKAGE_netdata=y
-          CONFIG_PACKAGE_ddns-scripts_cloudflare.com-v4=y
-          CONFIG_PACKAGE_fdisk=y
-          CONFIG_PACKAGE_lsblk=y
+          CONFIG_PACKAGE_dbus=y
           CONFIG_PACKAGE_dnsmasq_full_dhcpv6=y
-          CONFIG_PACKAGE_ipv6helper=y
+          CONFIG_PACKAGE_docker-ce=y
+          CONFIG_PACKAGE_fdisk=y
+          CONFIG_PACKAGE_haproxy=y
+          CONFIG_PACKAGE_iptables-mod-extra=y
+          CONFIG_PACKAGE_kmod-br-netfilter=y
+          CONFIG_PACKAGE_kmod-crypto-crc32c=y
+          CONFIG_PACKAGE_kmod-dax=y
+          CONFIG_PACKAGE_kmod-dm=y
+          CONFIG_PACKAGE_kmod-ikconfig=y
+          CONFIG_PACKAGE_kmod-ipt-extra=y
+          CONFIG_PACKAGE_kmod-lib-crc32c=y
+          CONFIG_PACKAGE_kmod-nf-ipvs=y
+          CONFIG_PACKAGE_kmod-veth=y
+          CONFIG_PACKAGE_libattr=y
+          CONFIG_PACKAGE_libavahi-client=y
+          CONFIG_PACKAGE_libavahi-dbus-support=y
+          CONFIG_PACKAGE_libcap=y
+          CONFIG_PACKAGE_libcurl=y
+          CONFIG_PACKAGE_libdaemon=y
+          CONFIG_PACKAGE_libdbus=y
+          CONFIG_PACKAGE_libdevmapper=y
+          CONFIG_PACKAGE_libexpat=y
+          CONFIG_PACKAGE_libfdisk=y
+          CONFIG_PACKAGE_libgmp=y
+          CONFIG_PACKAGE_libgnutls=y
+          CONFIG_PACKAGE_libltdl=y
+          CONFIG_PACKAGE_liblzo=y
+          CONFIG_PACKAGE_libmaxminddb=y
+          CONFIG_PACKAGE_libmount=y
+          CONFIG_PACKAGE_libncurses=y
+          CONFIG_PACKAGE_libnettle=y
+          CONFIG_PACKAGE_libnetwork=y
+          CONFIG_PACKAGE_libpam=y
+          CONFIG_PACKAGE_libpopt=y
+          CONFIG_PACKAGE_libreadline=y
+          CONFIG_PACKAGE_libtasn1=y
+          CONFIG_PACKAGE_libtirpc=y
+          CONFIG_PACKAGE_libwebsockets-full=y
+          CONFIG_PACKAGE_lua-cjson=y
+          CONFIG_PACKAGE_lua-maxminddb=y
+          CONFIG_PACKAGE_luasocket=y
+          CONFIG_PACKAGE_luci-app-dockerman=y
+          CONFIG_PACKAGE_luci-app-openclash=y
+          CONFIG_PACKAGE_luci-app-passwall=y
+          CONFIG_PACKAGE_luci-app-passwall_INCLUDE_Trojan=y
+          CONFIG_PACKAGE_luci-app-samba4=y
+          # CONFIG_PACKAGE_luci-app-ssr-plus is not set
+          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Redsocks2 is not set
+          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_ShadowsocksR_Server is not set
+          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_Trojan is not set
+          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray is not set
+          # CONFIG_PACKAGE_luci-app-ssr-plus_INCLUDE_V2ray_plugin is not set
+          CONFIG_PACKAGE_luci-app-ttyd=y
+          CONFIG_PACKAGE_luci-app-vssr=y
+          CONFIG_PACKAGE_luci-app-vssr_INCLUDE_ShadowsocksR_Server=y
+          CONFIG_PACKAGE_luci-i18n-dockerman-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-samba4-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
+          CONFIG_PACKAGE_luci-i18n-ttyd-zh-cn=y
+          CONFIG_PACKAGE_luci-theme-argon=y
+          CONFIG_PACKAGE_luci-theme-atmaterial=y
+          CONFIG_PACKAGE_luci-theme-opentomato=y
+          CONFIG_PACKAGE_luci-theme-opentomcat=y
+          CONFIG_PACKAGE_mount-utils=y
+          CONFIG_PACKAGE_resolveip=y
+          CONFIG_PACKAGE_runc=y
+          CONFIG_PACKAGE_samba4-libs=y
+          CONFIG_PACKAGE_samba4-server=y
+          CONFIG_PACKAGE_tcping=y
+          CONFIG_PACKAGE_terminfo=y
+          CONFIG_PACKAGE_tini=y
+          CONFIG_PACKAGE_ttyd=y
+          CONFIG_PACKAGE_unzip=y
+          CONFIG_PACKAGE_wsdd2=y
+          CONFIG_SAMBA4_SERVER_AVAHI=y
+          CONFIG_SAMBA4_SERVER_NETBIOS=y
+          CONFIG_SAMBA4_SERVER_VFS=y
+          CONFIG_TARGET_EXT4_BLOCKSIZE=4096
+          CONFIG_TARGET_EXT4_BLOCKSIZE_4K=y
+          CONFIG_TARGET_EXT4_JOURNAL=y
+          CONFIG_TARGET_EXT4_RESERVED_PCT=0
+          CONFIG_TARGET_IMAGES_GZIP=y
+          CONFIG_TARGET_ROOTFS_EXT4FS=y
+          CONFIG_TARGET_ROOTFS_PARTSIZE=512
+          # CONFIG_TARGET_ROOTFS_SQUASHFS is not set
+          CONFIG_TARGET_ROOTFS_TARGZ=y
+          CONFIG_LIBSODIUM_MINIMAL=y
+          CONFIG_PACKAGE_libev=y
+          CONFIG_PACKAGE_libevent2=y
+          CONFIG_PACKAGE_libnet-1.2.x=y
+          CONFIG_PACKAGE_libpcap=y
+          CONFIG_PACKAGE_libsodium=y
+          CONFIG_PACKAGE_microsocks=y
+          CONFIG_PACKAGE_redsocks2=y
+          CONFIG_PACKAGE_shadowsocks-libev-ss-local=y
+          CONFIG_PACKAGE_shadowsocks-libev-ss-redir=y
+          CONFIG_PACKAGE_simple-obfs=y
+          CONFIG_PACKAGE_tcpping=y
+          CONFIG_PACKAGE_v2ray-plugin=y
+          # CONFIG_PCAP_HAS_NETFILTER is not set
+          # CONFIG_PCAP_HAS_USB is not set
+          # CONFIG_SIMPLE_OBFS_STATIC_LINK is not set
+          CONFIG_TARGET_PREINIT_IP="192.168.2.6"
+          CONFIG_TARGET_PREINIT_IP="192.168.2.6"
           EOF
           # 取消编译VMware镜像以及镜像填充 (不要删除被缩进的注释符号):
           cat >> .config <<EOF
