@@ -53,6 +53,14 @@ jobs:
       - name: Update feeds
         run: |
           sed -i 's/\"#src-git\"/\"src-git\"/g' ./feeds.conf.default
+          git clone https://github.com/jerrykuku/lua-maxminddb.git package-temp/lua-maxminddb
+          git clone https://github.com/jerrykuku/luci-app-vssr.git package-temp/luci-app-vssr
+          mv -f package-temp/lua-maxminddb package/lean/
+          mv -f package-temp/luci-app-vssr package/lean/
+          cat >> .config <<EOF
+          CONFIG_PACKAGE_lua-maxminddb=y
+          CONFIG_PACKAGE_luci-app-vssr=y
+          EOF
           ./scripts/feeds update -a
           ./scripts/feeds install -a
 
@@ -357,8 +365,7 @@ jobs:
           # CONFIG_PCAP_HAS_NETFILTER is not set
           # CONFIG_PCAP_HAS_USB is not set
           # CONFIG_SIMPLE_OBFS_STATIC_LINK is not set
-          CONFIG_TARGET_PREINIT_IP="192.168.2.6"
-          CONFIG_TARGET_PREINIT_IP="192.168.2.6"
+          CONFIG_TARGET_PREINIT_IP="192.168.2.1"
           EOF
           # 取消编译VMware镜像以及镜像填充 (不要删除被缩进的注释符号):
           cat >> .config <<EOF
